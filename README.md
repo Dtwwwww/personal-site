@@ -20,30 +20,47 @@
 
 ## 本地预览
 
-纯看页面（agent 不可用）：
+纯看页面（AI 分身不可用）：
 
 ```bash
 python -m http.server 8000
 # 打开 http://localhost:8000
 ```
 
-完整联调（含 AI 分身，需要 [Vercel CLI](https://vercel.com/cli)）：
+完整联调（含 AI 分身，需要 [Wrangler CLI](https://developers.cloudflare.com/workers/wrangler/)）：
 
 ```bash
-npm i -g vercel
-cp .env.example .env   # 填入 DEEPSEEK_API_KEY
-vercel dev             # 打开提示的本地地址
+npm i -g wrangler
+cp .env.example .dev.vars   # 填入 DEEPSEEK_API_KEY
+wrangler pages dev           # 打开提示的本地地址
 ```
 
 ## 部署
 
-1. 推送本目录到 GitHub 仓库
-2. Vercel → Import Project → 选择该仓库（零配置，自动识别静态站点 + `api/` 函数）
-3. Vercel 项目 Settings → Environment Variables 添加 `DEEPSEEK_API_KEY`
-4. 访问分配的 `*.vercel.app` 域名
+本项目部署在 **Cloudflare Pages** 上。
 
-## 环境变量
+### 首次部署
+
+```bash
+# 1. 安装 Wrangler CLI
+npm install -g wrangler
+
+# 2. 创建项目并部署
+npx wrangler pages project create personal-site --production-branch master
+npx wrangler pages deploy .
+
+# 3. 设置环境变量（AI 分身问答必需）
+npx wrangler pages secret put DEEPSEEK_API_KEY --project-name personal-site
+```
+
+### 后续更新
+
+```bash
+npx wrangler pages deploy .
+```
+
+### 环境变量
 
 | 变量 | 说明 |
 |---|---|
-| `DEEPSEEK_API_KEY` | DeepSeek 平台 API Key（platform.deepseek.com 注册获取） |
+| `DEEPSEEK_API_KEY` | DeepSeek 平台 API Key（platform.deepseek.com 注册获取） 
