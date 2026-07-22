@@ -57,53 +57,13 @@ a:hover { text-decoration: underline; }
 
 .mono { font-family: var(--mono); color: var(--accent); }
 
-/* ============================================================
-   吊灯（装饰层，位于遮罩之上）
-   ============================================================ */
-.lamp {
-  position: fixed;
-  top: 0;
-  left: 50%;
-  translate: -50% 0;
-  z-index: 60;
-  pointer-events: none;
-  transform-origin: top center;
-  animation: lamp-sway 7s ease-in-out infinite;
-  filter: drop-shadow(0 18px 28px rgba(255, 212, 121, 0.25));
-}
-
-@keyframes lamp-sway {
-  0%, 100% { rotate: -2.4deg; }
-  50%      { rotate: 2.4deg; }
-}
-
-.lamp-bulb { animation: bulb-glow 3.2s ease-in-out infinite; }
-
-@keyframes bulb-glow {
-  0%, 100% { opacity: 1; }
-  50%      { opacity: 0.72; }
-}
-
-/* 灯罩下投射的圆锥微光 */
-.lamp-cone {
-  position: absolute;
-  top: 128px;
-  left: 50%;
-  translate: -50% 0;
-  width: 340px;
-  height: 420px;
-  background: linear-gradient(rgba(255, 212, 121, 0.10), transparent 82%);
-  clip-path: polygon(38% 0, 62% 0, 100% 100%, 0 100%);
-}
-
-/* Three.js 吊灯画布：3D 就绪后接管，隐藏 SVG 回退吊灯 */
+/* Three.js 吊灯画布 */
 #lampCanvas {
   position: fixed;
   inset: 0;
   z-index: 60;
-  pointer-events: none;   /* 拖拽事件挂在 window 上，画布不拦截页面交互 */
+  pointer-events: none;
 }
-body.lamp3d-active .lamp { display: none; }
 
 /* 首屏终端彩蛋 */
 .hero-egg {
@@ -596,7 +556,6 @@ body.lights-on .hero-hint { display: none; }
 @media (hover: none), (prefers-reduced-motion: reduce) {
   .darkness { display: none; }
   .hero-hint { display: none; }
-  .lamp { animation: none; }
   .reveal { opacity: 1; translate: none; transition: none; }
 }
 

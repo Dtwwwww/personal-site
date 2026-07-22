@@ -39,12 +39,6 @@
 
   if (!isTouch && !reducedMotion) {
     window.addEventListener("pointermove", onPointerMove);
-    // 吊灯初始落点：屏幕顶边正中（SVG 吊灯正下方）
-    window.__setLamp(window.innerWidth / 2, 140);
-    // 3D 吊灯就绪：隐藏 SVG 回退吊灯（手电筒逻辑保持不变，双光源共存）
-    window.addEventListener("lamp3d:ready", function () {
-      body.classList.add("lamp3d-active");
-    });
   }
 
   // 开灯 / 关灯切换

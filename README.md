@@ -23,8 +23,8 @@
 纯看页面（AI 分身不可用）：
 
 ```bash
-python -m http.server 8000
-# 打开 http://localhost:8000
+python -m http.server 8788
+# 打开 http://localhost:8788
 ```
 
 完整联调（含 AI 分身，需要 [Wrangler CLI](https://developers.cloudflare.com/workers/wrangler/)）：
