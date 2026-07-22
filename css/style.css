@@ -546,7 +546,7 @@ main { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
   -webkit-mask-composite: source-in;
 }
 
-body.lit .darkness { --lr: 320px; --mr: 240px; }
+body.lit .darkness { --lr: 521px; --mr: 520px; }
 
 /* 全亮模式 / 减少动效 / 触摸设备：直接隐藏遮罩 */
 body.lights-on .darkness { display: none; }
