@@ -63,6 +63,7 @@ a:hover { text-decoration: underline; }
   inset: 0;
   z-index: 60;
   pointer-events: none;
+  touch-action: none;
 }
 
 /* 首屏终端彩蛋 */

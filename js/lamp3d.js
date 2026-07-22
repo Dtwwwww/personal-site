@@ -162,12 +162,15 @@ function init() {
     if (e.button !== 0) return;
     const s = bulbScreen();
     if (Math.hypot(e.clientX - s.x, e.clientY - s.y) > HIT_RADIUS_PX) return;
+    e.preventDefault();
+    canvas.setPointerCapture(e.pointerId);
     dragging = true;
     downAt = { x: e.clientX, y: e.clientY };
   });
 
   window.addEventListener("pointermove", (e) => {
     if (!dragging) return;
+    e.preventDefault();
     setNdc(e);
     raycaster.setFromCamera(ndc, camera);
     if (raycaster.ray.intersectPlane(dragPlane, dragPoint)) {
@@ -181,6 +184,7 @@ function init() {
 
   window.addEventListener("pointerup", (e) => {
     if (!dragging) return;
+    canvas.releasePointerCapture(e.pointerId);
     dragging = false;
     // 几乎没移动的"点按" → 切换光色
     if (downAt && Math.hypot(e.clientX - downAt.x, e.clientY - downAt.y) < 6) {
