@@ -32,7 +32,7 @@ function webglAvailable() {
 
 /* 生成灯泡光晕的径向渐变贴图 */
 function makeGlowTexture(hex) {
-  const size = 128;
+  const size = 200;
   const cv = document.createElement("canvas");
   cv.width = cv.height = size;
   const ctx = cv.getContext("2d");
