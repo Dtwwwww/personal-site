@@ -163,7 +163,7 @@ function init() {
     const s = bulbScreen();
     if (Math.hypot(e.clientX - s.x, e.clientY - s.y) > HIT_RADIUS_PX) return;
     e.preventDefault();
-    canvas.setPointerCapture(e.pointerId);
+    document.body.dataset.lampDragging = "1";
     dragging = true;
     downAt = { x: e.clientX, y: e.clientY };
   });
@@ -178,13 +178,13 @@ function init() {
       dragPoint.sub(anchor).setLength(CORD_LEN).add(anchor);
       const delta = dragPoint.clone().sub(pos);
       pos.copy(dragPoint);
-      prev.copy(pos).sub(delta); // 让松手时继承拖拽速度
+      prev.copy(pos);
     }
   });
 
   window.addEventListener("pointerup", (e) => {
     if (!dragging) return;
-    canvas.releasePointerCapture(e.pointerId);
+    delete document.body.dataset.lampDragging;
     dragging = false;
     // 几乎没移动的"点按" → 切换光色
     if (downAt && Math.hypot(e.clientX - downAt.x, e.clientY - downAt.y) < 6) {

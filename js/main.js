@@ -29,6 +29,7 @@
     body.style.setProperty("--my", pendingY + "px");
   }
   function onPointerMove(e) {
+    if (document.body.dataset.lampDragging) return;
     pendingX = e.clientX;
     pendingY = e.clientY;
     if (rafId === null) rafId = requestAnimationFrame(applyLightPosition);
