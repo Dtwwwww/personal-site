@@ -1,5 +1,7 @@
 # 个人介绍网站
 
+> 🌐 **线上地址：[personal-site-9ho.pages.dev](https://personal-site-9ho.pages.dev)**
+
 > 深色「灯光探索」主题的个人主页 + AI 分身问答。纯静态前端 + 一个 Cloudflare Pages Function，零构建依赖。
 
 ## 功能
