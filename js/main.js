@@ -68,6 +68,66 @@
   });
 
   /* ----------------------------------------------------------
+   * 1.6 手机端：独立处理吊灯拖拽（lamp3d.js 在 file:// 下
+   *            不加载，需在 main.js 单独实现命中检测 + 滚动屏蔽）
+   *            电脑端完全不动，由 lamp3d.js 接管。
+   * ---------------------------------------------------------- */
+  (function setupMobileLamp() {
+    if (!isTouch || reducedMotion) return;
+
+    // 以下数值需与 lamp3d.js 的 camera/cordLen 配置保持同步
+    // 相机 FOV=40° at z=10 → 可视高度 ≈ 3.49 世界单位
+    var VIEW_HEIGHT = 3.49;          // 世界坐标可视高度
+    var CORD_LEN    = 1;             // 世界单位绳长
+    var HIT_RADIUS  = 90;            // 命中半径（px）
+
+    // 世界 → 屏幕（与 lamp3d.js bulbScreen() 一致）
+    function worldToScreen(wx, wy) {
+      var vh = VIEW_HEIGHT;
+      var sx = ((wx / vh + 1) * 0.5) * window.innerWidth;
+      var sy = ((-wy / vh + 1) * 0.5) * window.innerHeight;
+      return { x: sx, y: sy };
+    }
+
+    // 锚点 = 顶边正中央
+    function anchorWorld() {
+      return { x: 0, y: VIEW_HEIGHT / 2 };
+    }
+
+    // 灯泡世界坐标（绳末端，距锚点正下方 CORD_LEN）
+    function bulbWorldPos() {
+      var a = anchorWorld();
+      return { x: a.x, y: a.y - CORD_LEN };
+    }
+
+    // 灯泡屏幕坐标
+    function bulbScreen() {
+      return worldToScreen(bulbWorldPos().x, bulbWorldPos().y);
+    }
+
+    var dragging = false;
+
+    document.addEventListener("touchstart", function (e) {
+      if (e.touches.length !== 1) return;
+      var t   = e.touches[0];
+      var b  = bulbScreen();
+      if (Math.hypot(t.clientX - b.x, t.clientY - b.y) <= HIT_RADIUS) {
+        dragging = true;
+        body.dataset.lampDragging = "1";
+        e.preventDefault();
+      }
+    }, { passive: false });
+
+    document.addEventListener("touchmove", function (e) {
+      if (!dragging) return;
+      e.preventDefault(); // 拖拽时阻止页面滚动（含橡皮筋弹性）
+    }, { passive: false });
+
+    document.addEventListener("touchend",  function () { dragging = false; delete body.dataset.lampDragging; });
+    document.addEventListener("touchcancel", function () { dragging = false; delete body.dataset.lampDragging; });
+  })();
+
+  /* ----------------------------------------------------------
    * 2. 导航：滚动背景 + 滚动进度条
    * ---------------------------------------------------------- */
   var nav = document.getElementById("nav");

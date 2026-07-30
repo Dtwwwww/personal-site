@@ -130,12 +130,24 @@
 
         <article class="project-card reveal">
           <div class="project-head">
+            <h3>智析 BrainMatch · AI 求职教练<span class="project-tag">独立全栈（即将部署上线）</span></h3>
+            <a class="project-link" href="https://github.com/Dtwwwww/BrainMatch----" target="_blank" rel="noopener">↗ GitHub</a>
+          </div>
+          <p class="project-desc">独立从零设计并开发了一款 AI 求职教练 SaaS 应用——用户输入 JD 和简历，系统通过 4 个 AI Agent 协作流水线自动产出猎头级匹配分析报告。核心架构：① 4 Agent 顺序流水线（岗位冰山模型解析 → 简历信号深度扫描 → 5:3:2 加权匹配与 SABC 评级 → 6 种题型面试题库），每个 Agent 拥有独立的 Role Prompt、temperature 和 token 预算，578 行结构化 Prompt 模板含 20+ 字段严格 JSON Schema；② 四策略 JSON 容错解析器将 LLM 非标准输出导致的解析失败率降至接近零；③ 基于 SHA256 的 JD 语义缓存 + FORBIDDEN_MODELS 黑名单 + DeepSeek 默认路由，单次分析成本控制在 GPT-4o 的 1/10；④ 全栈 SaaS 基础设施：Supabase RLS 全表安全、手机号/邮箱/微信三种登录、Provider 抽象支付层、次数原子扣减与失败退款、SSE 实时进度推送。全栈独立交付：Next.js 14 App Router + TypeScript + Tailwind CSS，35 个 API 端点，21 个 UI 组件，10 张 PostgreSQL 表全部启用行级安全。</p>
+          <p class="project-result">✦ <strong>~13,500</strong> 行 TypeScript · <strong>4</strong> Agent 协作流水线 · <strong>35</strong> 个 API · <strong>21</strong> 个组件 · 独立开发（Git 唯一作者）</p>
+          <ul class="tags"><li>Next.js 14</li><li>TypeScript</li><li>Supabase</li><li>OpenAI / DeepSeek</li><li>Prompt Engineering</li><li>Tailwind CSS</li><li>SSE</li><li>SaaS 计费</li></ul>
+        </article>
+
+        <article class="project-card reveal">
+          <div class="project-head">
             <h3>AIGC 设计工具深度研究</h3>
           </div>
           <p class="project-desc">建筑学背景让我关注到 AIGC 在设计领域的落地断层。我系统性研究了主流 AI 绘图工具：精通文生图 / 图生图及 ControlNet（Canny / Depth / OpenPose）对空间结构的精准控制；实践 LoRA 模型训练，用建筑风格数据集（现代主义、参数化表皮）完成风格微调实验；对建筑学长AI、小库科技 XKool、酷家乐等竞品做逆向拆解，形成产品体验报告，提炼出"精准控图"与"设计规范智能校验"两大差异化方向。</p>
           <p class="project-result">✦ 自创"结构-风格-细节"<strong>三层提示词框架</strong>，应用于多个 AI 绘图产品，有效提升出图可控性</p>
           <ul class="tags"><li>Midjourney V6</li><li>Stable Diffusion</li><li>ControlNet</li><li>LoRA</li><li>竞品分析</li></ul>
         </article>
+
+        
 
       </div>
     </section>
