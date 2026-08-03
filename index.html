@@ -64,10 +64,10 @@
         </ul>
       </div>
       <div class="exp-banner reveal">
-        <span class="exp-badge">实习经历</span>
+        <span class="exp-badge">实习经历 · AI 评测</span>
         <div>
-          <strong>AI Agent 开发实习生</strong><span class="exp-date">2026.03 – 2026.07</span>
-          <p>主导 Recruitment AI Agent 智能招聘平台的规划与落地，覆盖 JD 解析、简历抓取、多模态提取、Agent 链匹配、面试题生成全流程，将单次筛选从 15 分钟压缩至 2 分钟。</p>
+          <strong>AI 评测实习生</strong><span class="exp-date">2025.12 – 2026.07</span>
+          <p>负责多场景大模型评测体系搭建与自动化管线开发：设计摘要/翻译/代码补全等 5 大核心场景的 Benchmark（650 条结构化评测集），主导 Prompt 模板差异分析与陷阱规避策略，将评测一致性从 78% 提升至 92%；搭建 Python 自动化评测管线，将单次全量评测从半天压缩至 30 分钟；通过多维度归因分析定位模型「长文本指令遵循」维度缺陷，驱动算法团队调整上下文窗口策略，使该维度准确率从 62% 提升至 78%。</p>
         </div>
       </div>
     </section>
@@ -81,16 +81,16 @@
           <ul class="tags"><li>Python</li><li>Java</li><li>SQL</li><li>JavaScript</li></ul>
         </div>
         <div class="skill-group reveal">
-          <h3>AI 工具与大模型</h3>
-          <ul class="tags"><li>Claude Code</li><li>CodeX</li><li>Prompt 工程</li><li>Function Calling</li><li>RAG</li><li>千问 / GLM API</li><li>LangChain / LangChain4j</li><li>向量检索 pgvector / Milvus</li></ul>
+          <h3>大模型与评测</h3>
+          <ul class="tags"><li>模型评测</li><li>LLM-as-a-Judge</li><li>Prompt 工程</li><li>Benchmark 设计</li><li>千问 / GLM API</li><li>Function Calling</li><li>RAG</li><li>LangChain</li></ul>
         </div>
         <div class="skill-group reveal">
           <h3>框架与工程</h3>
-          <ul class="tags"><li>FastAPI</li><li>Spring Boot</li><li>Next.js</li><li>Playwright</li><li>Docker</li><li>Redis</li><li>Celery</li><li>Git</li><li>阿里云 ECS</li></ul>
+          <ul class="tags"><li>FastAPI</li><li>Next.js</li><li>Docker</li><li>Git</li><li>Redis</li><li>Celery</li><li>Playwright</li></ul>
         </div>
         <div class="skill-group reveal">
-          <h3>产品与协作</h3>
-          <ul class="tags"><li>PRD 撰写</li><li>Axure / Figma</li><li>SQL / Python 数据分析</li><li>A/B 实验</li></ul>
+          <h3>数据分析</h3>
+          <ul class="tags"><li>pandas / NumPy</li><li>数据可视化</li><li>Streamlit / Grafana</li><li>SQL / Python 数据分析</li><li>数据清洗</li><li>A/B 实验</li></ul>
         </div>
       </div>
     </section>
@@ -99,6 +99,15 @@
     <section class="section" id="projects">
       <h2 class="section-title reveal"><span class="mono">03.</span> 项目经历</h2>
       <div class="project-list">
+
+        <article class="project-card reveal">
+          <div class="project-head">
+            <h3>大模型问答质量评测与分析<span class="project-tag">课程项目 · 独立研究</span></h3>
+          </div>
+          <p class="project-desc">针对开源模型在实际应用中表现不稳定的问题，独立完成 3 个主流开源模型（Qwen-7B、ChatGLM3-6B、DeepSeek-7B）在 280 余条高质量测试样本上的对比评测。从公开数据集收集并人工校验 280 条测试题，覆盖事实问答、逻辑推理、代码补全、安全合规 4 大核心维度；设计多维度评分规则（Rubric）与自动化计算流程，实现评测全流程标准化与可复现；独立执行 n-gram 重叠校验剔除 5% 疑似数据污染样本，固定 temperature=0.7 并进行多次采样平均，有效消除生成随机性带来的噪声。发现 Qwen-7B 在「逻辑推理」准确率（74%）显著高于 ChatGLM3-6B（58%），但在「代码补全」维度相反（62% vs 79%），为不同业务场景的模型选型提供量化依据。独立撰写 8 页《三模型能力对比评测报告》，结合 Matplotlib 数据可视化与典型案例拆解，获课程最高分。</p>
+          <p class="project-result">✦ 280 条测试样本 · 4 大评测维度 · 3 模型横向对比 · n-gram 污染过滤 · 8 页量化报告</p>
+          <ul class="tags"><li>Python</li><li>OpenAI API</li><li>pandas/matplotlib</li><li>SQLite</li><li>LLM-as-a-Judge</li><li>Benchmark 设计</li></ul>
+        </article>
 
         <article class="project-card reveal">
           <div class="project-head">
@@ -112,42 +121,13 @@
 
         <article class="project-card reveal">
           <div class="project-head">
-            <h3>sspOffer 面经助手 · AI 智能面试 Agent</h3>
-          </div>
-          <p class="project-desc">求职者准备面试时面经分散、算法题练习与面经脱节。我基于 ReAct 范式独立设计了这个能"感知-推理-行动"的面试 Agent：精细化 Prompt 引导意图识别与工具选择，意图识别准确率达 92%；基于 LangChain4j 封装 7 个 Tool（查面经 / 算法题 / 按 ID 获取 / 运行代码 / 联网搜题），Agent 自主编排调用，算法题场景绕过模型自由生成，响应从 5s 降至 1.2s；RAG 链路用 InMemoryEmbeddingStore 做相似度检索，Top-5 动态注入 System Prompt，异步建索引让上传延迟从 3.2s 降到 400ms；针对模型输出不可控，设计"URL 强清洗 + 双重校验"多层防御，输出准确率 95%+。代码考核由自建 Piston 沙箱执行，自动识别 Java 入口、无 main 时注入测试类。独立完成阿里云 ECS 部署，公网 Piston 超时问题通过 Docker 自建 + Nginx 反代根治。</p>
-          <p class="project-result">✦ 意图识别准确率 <strong>92%</strong> · 高频题 <strong>200ms</strong> 内响应 · 题解链接准确率 <strong>78% → 96%</strong></p>
-          <ul class="tags"><li>Java 17</li><li>Spring Boot 3.2</li><li>LangChain4j</li><li>RAG</li><li>Function Calling</li><li>WebFlux</li><li>Docker</li><li>阿里云 ECS</li></ul>
-        </article>
-
-        <article class="project-card reveal">
-          <div class="project-head">
-            <h3>AI 徒步导航小程序<span class="project-tag">产品负责人</span></h3>
-          </div>
-          <p class="project-desc">户外徒步场景下传统导航在弱网环境频繁失效。我从 0 到 1 发起这款 AI 增强导航产品：完成 50+ 用户深度访谈与竞品分析，定义"智能路线推荐 + 弱网离线导航"核心功能，撰写完整 PRD 并协调设计、开发、测试 3 人团队按 2 周一迭代交付 MVP；建立埋点度量体系，通过数据发现弱网环境流失率偏高，推动技术团队采用轻量化数据方案，并独立撰写商业推广方案进行市场路演。</p>
-          <p class="project-result">✦ <strong>500+</strong> 种子用户 · 路演转化率 <strong>32%</strong> · 使用时长 <strong>+35%</strong> · 弱网活跃 <strong>+28%</strong> · 获校内创新实践优秀项目奖</p>
-          <ul class="tags"><li>产品定义</li><li>用户研究</li><li>数据分析</li><li>敏捷管理</li></ul>
-        </article>
-
-        <article class="project-card reveal">
-          <div class="project-head">
-            <h3>智析 BrainMatch · AI 求职教练<span class="project-tag">独立全栈（即将部署上线）</span></h3>
+            <h3>智析 BrainMatch · AI 求职教练<span class="project-tag">独立全栈</span></h3>
             <a class="project-link" href="https://github.com/Dtwwwww/BrainMatch----" target="_blank" rel="noopener">↗ GitHub</a>
           </div>
           <p class="project-desc">独立从零设计并开发了一款 AI 求职教练 SaaS 应用——用户输入 JD 和简历，系统通过 4 个 AI Agent 协作流水线自动产出猎头级匹配分析报告。核心架构：① 4 Agent 顺序流水线（岗位冰山模型解析 → 简历信号深度扫描 → 5:3:2 加权匹配与 SABC 评级 → 6 种题型面试题库），每个 Agent 拥有独立的 Role Prompt、temperature 和 token 预算，578 行结构化 Prompt 模板含 20+ 字段严格 JSON Schema；② 四策略 JSON 容错解析器将 LLM 非标准输出导致的解析失败率降至接近零；③ 基于 SHA256 的 JD 语义缓存 + FORBIDDEN_MODELS 黑名单 + DeepSeek 默认路由，单次分析成本控制在 GPT-4o 的 1/10；④ 全栈 SaaS 基础设施：Supabase RLS 全表安全、手机号/邮箱/微信三种登录、Provider 抽象支付层、次数原子扣减与失败退款、SSE 实时进度推送。全栈独立交付：Next.js 14 App Router + TypeScript + Tailwind CSS，35 个 API 端点，21 个 UI 组件，10 张 PostgreSQL 表全部启用行级安全。</p>
           <p class="project-result">✦ <strong>~13,500</strong> 行 TypeScript · <strong>4</strong> Agent 协作流水线 · <strong>35</strong> 个 API · <strong>21</strong> 个组件 · 独立开发（Git 唯一作者）</p>
           <ul class="tags"><li>Next.js 14</li><li>TypeScript</li><li>Supabase</li><li>OpenAI / DeepSeek</li><li>Prompt Engineering</li><li>Tailwind CSS</li><li>SSE</li><li>SaaS 计费</li></ul>
         </article>
-
-        <article class="project-card reveal">
-          <div class="project-head">
-            <h3>AIGC 设计工具深度研究</h3>
-          </div>
-          <p class="project-desc">建筑学背景让我关注到 AIGC 在设计领域的落地断层。我系统性研究了主流 AI 绘图工具：精通文生图 / 图生图及 ControlNet（Canny / Depth / OpenPose）对空间结构的精准控制；实践 LoRA 模型训练，用建筑风格数据集（现代主义、参数化表皮）完成风格微调实验；对建筑学长AI、小库科技 XKool、酷家乐等竞品做逆向拆解，形成产品体验报告，提炼出"精准控图"与"设计规范智能校验"两大差异化方向。</p>
-          <p class="project-result">✦ 自创"结构-风格-细节"<strong>三层提示词框架</strong>，应用于多个 AI 绘图产品，有效提升出图可控性</p>
-          <ul class="tags"><li>Midjourney V6</li><li>Stable Diffusion</li><li>ControlNet</li><li>LoRA</li><li>竞品分析</li></ul>
-        </article>
-
-        
 
       </div>
     </section>
