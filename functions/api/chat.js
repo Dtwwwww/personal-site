@@ -5,6 +5,9 @@
    路由：POST /api/chat
    ============================================================ */
 
+// 【暂时关闭】问答功能开关：false = 关闭接口，true = 开启。恢复时改为 true 即可。
+const CHAT_ENABLED = false;
+
 // 站主简历信息 —— AI 分身只能依据这里的内容回答
 const PROFILE = `
 姓名：丁泰威，坐标浙江杭州，2026 届本科应届生（立即到岗），求职方向 AI Agent 开发工程师。
@@ -54,6 +57,10 @@ function json(data, status = 200) {
 
 export async function onRequestPost(context) {
   const { request, env } = context;
+
+  if (!CHAT_ENABLED) {
+    return json({ error: "问答功能暂时关闭，欢迎通过页面下方联系方式直接联系我" }, 503);
+  }
 
   const apiKey = env.DEEPSEEK_API_KEY;
   if (!apiKey) {

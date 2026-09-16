@@ -6,6 +6,8 @@
 
   var QUOTA_TOTAL = 5;
   var STORAGE_KEY = "agent_quota_used";
+  // 问答开关：false = 暂时关闭（与服务端 functions/api/chat.js 的 CHAT_ENABLED 保持一致），恢复时改为 true
+  var CHAT_ENABLED = false;
 
   var form = document.getElementById("chatForm");
   var input = document.getElementById("chatInput");
@@ -92,4 +94,11 @@
   });
 
   refreshQuota();
+
+  // 暂时关闭时：禁用输入框并给出提示（与服务端开关保持一致）
+  if (!CHAT_ENABLED) {
+    input.disabled = true;
+    sendBtn.disabled = true;
+    input.placeholder = "问答功能暂时关闭，欢迎通过下方联系方式直接联系我";
+  }
 })();
